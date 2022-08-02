@@ -12,6 +12,14 @@
   align-content: center;
 
   background-color: white;
+  
+
+  &__message{
+    flex-basis: 100%;
+    color: red;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
 }
 
 .login-form{

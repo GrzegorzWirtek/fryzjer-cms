@@ -1,10 +1,11 @@
 import axios from 'axios';
 
 const URL = 'http://localhost:3001/';
-const LOGIN = 'services';
-const SERVICES = 'login';
+const LOGIN = 'login';
+const SERVICES = 'services';
 
-export const checkLogin = () => axios.post(`${URL}${LOGIN}`);
+export const checkLogin = (loginData: { login: string; password: string }) =>
+	axios.post(`${URL}${LOGIN}`, { loginData });
 
 export const getServices = () => axios.get(`${URL}${SERVICES}`);
 

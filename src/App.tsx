@@ -9,17 +9,7 @@ import Header from './components/Header/Header';
 function App() {
 	const [loginCorrect, setLoginCorrect] = useState(false);
 
-	const handleSubmit = (e: React.SyntheticEvent) => {
-		e.preventDefault();
-		const target = e.target as typeof e.target & {
-			login: { value: string };
-			password: { value: string };
-		};
-		const login = target.login.value;
-		const password = target.password.value;
-
-		console.log('to z login page', login, password);
-
+	const handleSubmit = () => {
 		setLoginCorrect(true);
 	};
 
