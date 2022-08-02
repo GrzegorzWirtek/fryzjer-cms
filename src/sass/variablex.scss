@@ -6,21 +6,31 @@ $font-family-2: 'Lobster', cursive;
 $bcg-transition: 0.2s;
 $transition-time: 0.2s;
 
-$min-width: 600px;
-$medium-width: 800px;
+$font-size-5: 1.6rem;
 
-$font-size-1: 1rem;
-$font-size-2: 1.1rem;
+//NAV
+$nav-hover-color: grey;
+$logout-color: rgb(255, 29, 29);
+$logout-color-hover: rgb(204, 0, 0);
+
+//BUTTON
+$button-padding-horizontal: 7px;
+$button-padding-vertical: 20px;
+$button-color-1: rgb(36, 25, 46);
+$button-color-1-hover: rgb(64, 47, 80);
+$button-width: 200px;
 
 
-//HOME
-$font-size-title-mobile: 3rem;
-$font-size-subtitle-mobile: 0.8rem;
-$font-size-title: 5.2rem;
-$font-size-subtitle: 1rem;
+//HEADER
+$title-font-size-mobile: 1.3rem;
+$subtitle-font-size-mobile: 1.1rem;
+$title-font-size: 2rem;
+$subtitle-font-size: 1.9rem;
+$header-bcg-color: rgb(56, 56, 72);
+$header-height: auto;
 
-$button-bcg-color: #0c070481;
-$button-bcg-color-hover: #0c0704e7;
+//LOGIN
+$login-form-width: 200px;
 
 //PRICELIST
 $service-max-width: 800px;

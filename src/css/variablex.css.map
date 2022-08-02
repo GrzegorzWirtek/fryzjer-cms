@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,OAAO,CAAC,kHAAI",
+    "sources": [
+        "../sass/variablex.scss"
+    ],
+    "names": [],
+    "file": "variablex.css"
+}

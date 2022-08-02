@@ -1,0 +1,64 @@
+.login-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: white;
+}
+
+.login-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  max-width: 200px;
+}
+
+.login-form__input {
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 7px 5px;
+  font-size: 17px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+
+.login-form__button {
+  width: 100%;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 7px 20px;
+  font-size: 17px;
+  background-color: #24192e;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.login-form__button:hover {
+  background-color: #402f50;
+}
+/*# sourceMappingURL=LoginPage.css.map */

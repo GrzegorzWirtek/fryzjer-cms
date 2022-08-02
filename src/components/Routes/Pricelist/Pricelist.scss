@@ -7,6 +7,11 @@
   max-width: $service-max-width;
   margin: 0 auto;
 
+  &__index{
+    width: 30px;
+    text-align: left;
+  }
+
   &__title{
     flex-basis: 70%;
     text-align: left;

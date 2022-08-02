@@ -1,0 +1,33 @@
+@import '../../sass/variablex.scss';
+
+.nav{
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  display: flex;
+  z-index: 2;
+
+  &__link{
+    margin-left: 20px;
+    outline: none;
+    text-decoration: none;
+    font-family: $font-family-1;
+    color: white;
+    transition: $transition-time;
+    cursor: pointer;
+
+    &:hover{
+      color: $nav-hover-color;
+    }
+
+    &--logout{
+      font-weight: 600;
+      color: $logout-color;
+
+      &:hover{
+        color: $logout-color-hover;
+      }
+    }
+      
+  }
+}

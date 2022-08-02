@@ -1,3 +1,4 @@
+import './ServiceEditForm.scss';
 import { useState } from 'react';
 import { serviceToEditType } from '../Pricelist';
 
@@ -29,6 +30,7 @@ const ServiceEditForm: React.FC<propsType> = ({
 				value={newText}
 				onChange={(e) => setNewText(e.target.value)}
 				placeholder='Nazwa usługi'
+				required
 				className='service-edit-form__title'
 			/>
 			<input
@@ -37,6 +39,7 @@ const ServiceEditForm: React.FC<propsType> = ({
 				value={newPrice}
 				onChange={(e) => setNewPrice(parseFloat(e.target.value))}
 				placeholder='Cena usługi'
+				required
 				className='service-edit-form__price'
 			/>{' '}
 			<span className='service-edit-form__span'>zł</span>

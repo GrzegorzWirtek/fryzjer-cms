@@ -1,0 +1,41 @@
+@import '../../sass/variablex.scss';
+
+.header{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $header-height;
+  padding: 10px 0;
+  background-color: $header-bcg-color;
+  z-index: 2;
+
+  &--login{
+    justify-content: left;
+    padding: 10px 0 10px 20px;
+  }
+
+
+  &__title{
+    font-family:$font-family-2;
+    font-size: $title-font-size;
+    line-height: 1.1;
+    color: white;
+
+    &--login{
+      font-size: $title-font-size-mobile;
+    }
+  }
+
+  &__subtitle{
+    font-family: $font-family-1;
+    font-size: $subtitle-font-size;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: white;
+
+    &--login{
+      font-size: $subtitle-font-size-mobile;
+    }
+  }
+}
