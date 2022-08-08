@@ -1,0 +1,19 @@
+@import '../../../sass/variablex.scss';
+
+.contact{
+  &__phone{
+    display: flex;
+    text-decoration: none;
+   justify-content: center;
+  }
+
+  &__phone-img{
+    width: $phone-icon-width;
+  }
+
+  &__phone-nr{
+    outline: none;
+    text-decoration: none;
+    color: black;
+  }
+}
