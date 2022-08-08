@@ -7,10 +7,10 @@ const initialContactData = {
 	street: '',
 	buildingNr: 0,
 	apartmentNr: 0,
-	zipCode: 0,
+	zipCode: '',
 	city: '',
 	info: '',
-	tel: 0,
+	tel: '',
 };
 
 const Contact = () => {
@@ -25,6 +25,14 @@ const Contact = () => {
 		};
 		getContact();
 	}, []);
+
+	const updateData = (contacts: api.contactDataType) => {
+		console.log('updating data: ', contacts);
+	};
+
+	const cancelUpdatingData = () => {
+		setContactFormVisible(false);
+	};
 
 	const { street, buildingNr, apartmentNr, zipCode, city, info, tel } =
 		contactData;
@@ -63,7 +71,12 @@ const Contact = () => {
 					Edytuj
 				</button>
 			</section>
-			{contactFormVisible && <ContactForm />}
+			{contactFormVisible && (
+				<ContactForm
+					updateData={updateData}
+					cancelUpdatingData={cancelUpdatingData}
+				/>
+			)}
 		</>
 	);
 };

@@ -9,10 +9,10 @@ export type contactDataType = {
 	street: string;
 	buildingNr: number;
 	apartmentNr: number;
-	zipCode: number;
+	zipCode: string;
 	city: string;
 	info: string;
-	tel: number;
+	tel: string;
 };
 
 export const checkLogin = (loginData: { login: string; password: string }) =>
