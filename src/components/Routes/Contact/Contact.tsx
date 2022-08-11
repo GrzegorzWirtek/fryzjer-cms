@@ -26,8 +26,9 @@ const Contact = () => {
 		getContact();
 	}, []);
 
-	const updateData = (contacts: api.contactDataType) => {
-		console.log('updating data: ', contacts);
+	const updateData = async (contacts: api.contactDataType) => {
+		const { data } = await api.updateContact(contacts);
+		setContactData(data);
 	};
 
 	const cancelUpdatingData = () => {
