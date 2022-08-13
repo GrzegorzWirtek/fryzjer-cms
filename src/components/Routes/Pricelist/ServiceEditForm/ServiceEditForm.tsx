@@ -1,27 +1,54 @@
 import './ServiceEditForm.scss';
+import { StateType } from '../../../../state/reducers';
+import { useSelector, useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../../../../state';
 import { useState } from 'react';
-import { serviceToEditType } from '../Pricelist';
 
-interface propsType {
-	handleCancel: () => void;
-	handleSubmit: (e: React.SyntheticEvent) => void;
-	serviceToEdit: serviceToEditType;
-}
+const ServiceEditForm = () => {
+	const {
+		services,
+		formsVisibility: { currentId },
+	} = useSelector((state: StateType) => state);
+	const dispatch = useDispatch();
+	const { HideForm, UpdateService } = bindActionCreators(
+		actionCreators,
+		dispatch,
+	);
 
-const ServiceEditForm: React.FC<propsType> = ({
-	handleCancel,
-	handleSubmit,
-	serviceToEdit,
-}) => {
-	const [newText, setNewText] = useState<string>(serviceToEdit.text);
-	const [newPrice, setNewPrice] = useState<number>(serviceToEdit.price);
+	const currentService = services.filter((item) => item._id === currentId)[0];
+	const { text, price } = currentService;
+
+	const [newText, setNewText] = useState<string>(text);
+	const [newPrice, setNewPrice] = useState<number>(price);
 
 	const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
 		e.target.select();
 	};
 
+	const handleCancel = () => {
+		HideForm();
+	};
+
+	const handleSubmit = (e: React.SyntheticEvent) => {
+		e.preventDefault();
+		const target = e.target as typeof e.target & {
+			text: { value: string };
+			number: { value: number };
+		};
+		const newService = target.text.value;
+		const newPrice = target.number.value;
+
+		UpdateService({
+			_id: currentId,
+			text: newService,
+			price: newPrice,
+		});
+		HideForm();
+	};
+
 	return (
-		<form className='service-edit-form' onSubmit={(e) => handleSubmit(e)}>
+		<form className='service-edit-form' onSubmit={handleSubmit}>
 			<input
 				autoFocus
 				onFocus={handleFocus}

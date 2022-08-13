@@ -1,33 +1,29 @@
-import React, { useState } from 'react';
-import * as api from '../../api';
+import React, { useEffect, useState } from 'react';
 import './LoginPage.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../../state';
+import { StateType } from '../../state/reducers';
 
-// const handleSubmit = (e: React.SyntheticEvent) => {
-// 	e.preventDefault();
-// 	const target = e.target as typeof e.target & {
-// 		login: { value: string };
-// 		password: { value: string };
-// 	};
-// 	const login = target.login.value;
-// 	const password = target.password.value;
-
-// 	console.log('to z login page', login, password);
-// 	checkLogin(login, password);
-
-// 	setLoginCorrect(true);
-// };
-
-// const checkLogin = async (login: string, password: string) => {
-// 	const { data } = await api.checkLogin({ login, password });
-// 	console.log(data);
-// };
-
-interface propsType {
-	handleSubmit: () => void;
-}
-
-const LoginPage: React.FC<propsType> = ({ handleSubmit }) => {
+const LoginPage = () => {
 	const [message, setMessage] = useState('');
+
+	const dispatch = useDispatch();
+	const { CheckLogin } = bindActionCreators(actionCreators, dispatch);
+
+	const { login, password, firstVisit } = useSelector(
+		(state: StateType) => state.login,
+	);
+
+	useEffect(() => {
+		let message = '';
+		if (!login && !firstVisit) {
+			message = 'Błędny login';
+		} else if (!password && !firstVisit) {
+			message = 'Błędne hasło';
+		}
+		setMessage(message);
+	}, [login, password, firstVisit]);
 
 	const getInputsValue = (e: React.SyntheticEvent) => {
 		e.preventDefault();
@@ -38,18 +34,7 @@ const LoginPage: React.FC<propsType> = ({ handleSubmit }) => {
 		const login = target.login.value;
 		const password = target.password.value;
 
-		checkLogin(login, password);
-	};
-
-	const checkLogin = async (login: string, password: string) => {
-		const { data } = await api.checkLogin({ login, password });
-		console.log('to', data);
-
-		if (!data.login) {
-			setMessage('Błędny login');
-		} else if (!data.password) {
-			setMessage('Błędne hasło');
-		} else handleSubmit();
+		CheckLogin({ login, password });
 	};
 
 	return (

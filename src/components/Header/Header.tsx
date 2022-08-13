@@ -1,20 +1,18 @@
 import './Header.scss';
+import { StateType } from '../../state/reducers';
+import { useSelector } from 'react-redux';
 
-interface propsType {
-	loginCorrect: boolean;
-}
+const Header = () => {
+	const { isLoggedIn } = useSelector((state: StateType) => state.login);
 
-const Header: React.FC<propsType> = ({ loginCorrect }) => {
 	return (
-		<header className={`header ${loginCorrect ? 'header--login' : ''}`}>
+		<header className={`header ${isLoggedIn ? 'header--login' : ''}`}>
 			<h1
-				className={`header__title ${
-					loginCorrect ? 'header__title--login' : ''
-				}`}>
+				className={`header__title ${isLoggedIn ? 'header__title--login' : ''}`}>
 				Fryzjer męski
 				<p
 					className={`header__subtitle ${
-						loginCorrect ? 'header__subtitle--login' : ''
+						isLoggedIn ? 'header__subtitle--login' : ''
 					}`}>
 					{' '}
 					CMS

@@ -2,13 +2,14 @@ import './Nav.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Popup from '../Popup/Popup';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../../state';
 
-interface propsType {
-	handleLogout: () => void;
-}
-
-const Nav: React.FC<propsType> = ({ handleLogout }) => {
+const Nav = () => {
 	const [popupVisible, setPopupVisible] = useState(false);
+	const dispatch = useDispatch();
+	const { LogOut } = bindActionCreators(actionCreators, dispatch);
 	const navigate = useNavigate();
 
 	const handleCancel = () => {
@@ -17,7 +18,7 @@ const Nav: React.FC<propsType> = ({ handleLogout }) => {
 
 	const handleSubmit = () => {
 		navigate('/');
-		handleLogout();
+		LogOut();
 	};
 
 	return (

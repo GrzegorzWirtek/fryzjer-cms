@@ -7,6 +7,11 @@ import ServiceAddFrom, {
 	newServiceType,
 } from './ServiceAddFrom/ServiceAddFrom';
 
+import { StateType } from '../../../state/reducers';
+import { useSelector, useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../../../state';
+
 interface State {
 	servicesType: {
 		_id: number;
@@ -22,8 +27,22 @@ export type serviceToEditType = {
 };
 
 const Pricelist = () => {
+	const {
+		services,
+		formsVisibility: { serviceEditForm },
+	} = useSelector((state: StateType) => state);
+	const dispatch = useDispatch();
+	const { GetServices, ShowForm } = bindActionCreators(
+		actionCreators,
+		dispatch,
+	);
+
+	useEffect(() => {
+		GetServices();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const [state, setState] = useState<State['servicesType']>([]);
-	const [editFormVisible, setEditFormVisible] = useState(false);
 	const [serviceToEdit, setServiceToEdit] = useState<serviceToEditType>({
 		_id: 0,
 		text: '',
@@ -32,39 +51,8 @@ const Pricelist = () => {
 	const [addFormVisible, setAddFormVisible] = useState(false);
 	const [popupActive, setPopupActive] = useState(false);
 
-	useEffect(() => {
-		const loadServices = async () => {
-			const { data } = await api.getServices();
-			setState(data);
-		};
-		loadServices();
-	}, []);
-
 	const handleCancel = () => {
-		setEditFormVisible(false);
 		setAddFormVisible(false);
-	};
-
-	const handleSubmit = (e: React.SyntheticEvent) => {
-		e.preventDefault();
-		const target = e.target as typeof e.target & {
-			text: { value: string };
-			number: { value: number };
-		};
-		const newService = target.text.value;
-		const newPrice = target.number.value;
-		setEditFormVisible(false);
-
-		updateService({
-			_id: serviceToEdit._id,
-			text: newService,
-			price: newPrice,
-		});
-	};
-
-	const updateService = async (service: serviceToEditType) => {
-		const { data } = await api.updateService(service);
-		setState(data);
 	};
 
 	const handleDelete = (_id: number, text: string, price: number) => {
@@ -111,13 +99,7 @@ const Pricelist = () => {
 		setState(data);
 	};
 
-	const editForm = editFormVisible ? (
-		<ServiceEditForm
-			handleCancel={handleCancel}
-			handleSubmit={handleSubmit}
-			serviceToEdit={serviceToEdit}
-		/>
-	) : null;
+	const editForm = serviceEditForm ? <ServiceEditForm /> : null;
 
 	const addForm = addFormVisible ? (
 		<ServiceAddFrom
@@ -126,7 +108,7 @@ const Pricelist = () => {
 		/>
 	) : null;
 
-	const prices = state?.map((item, index) => (
+	const prices = services.map((item, index) => (
 		<div key={item._id} className='service'>
 			<p className='service__index'>{index + 1}.</p>
 			<p className='service__title'>{item.text}</p>
@@ -135,14 +117,9 @@ const Pricelist = () => {
 				src='icons/edit.svg'
 				alt='Edit icon'
 				className='service__edit-icon'
-				onClick={() => {
-					setServiceToEdit({
-						_id: item._id,
-						text: item.text,
-						price: item.price,
-					});
-					setEditFormVisible(true);
-				}}
+				onClick={() =>
+					ShowForm({ formName: 'serviceEditForm', currentId: item._id })
+				}
 			/>
 			<img
 				src='icons/delete.svg'
