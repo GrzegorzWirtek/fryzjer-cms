@@ -3,8 +3,16 @@ import {
 	LoginActionType,
 	ServicesActionType,
 	FormsVisibilityActionType,
+	ContactActionType,
 } from '../action-types';
-import { LoginAction, ServicesAction, FormsVisibilityAction } from '../actions';
+import {
+	LoginAction,
+	ServicesAction,
+	serviceType,
+	FormsVisibilityAction,
+	ContactAction,
+	contactType,
+} from '../actions';
 import { Dispatch } from 'react';
 
 export const CheckLogin = (loginData: { login: string; password: string }) => {
@@ -52,7 +60,7 @@ export const LogOut = () => {
 };
 
 export const ShowForm =
-	(formNameAndServiceId: { formName: string; currentId: number }) =>
+	(formNameAndServiceId: { formName: string; currentId?: number }) =>
 	(dispatch: Dispatch<FormsVisibilityAction>) => {
 		dispatch({
 			type: FormsVisibilityActionType.SHOW,
@@ -80,13 +88,68 @@ export const GetServices = () => async (dispatch: Dispatch<ServicesAction>) => {
 };
 
 export const UpdateService =
-	(service: { _id: number; text: string; price: number }) =>
-	async (dispatch: Dispatch<ServicesAction>) => {
+	(service: serviceType) => async (dispatch: Dispatch<ServicesAction>) => {
 		try {
 			const { data } = await api.updateService(service);
 
 			dispatch({
 				type: ServicesActionType.UPDATE_SERVICE,
+				payload: data,
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+export const AddService =
+	(services: { text: string; price: number }[]) =>
+	async (dispatch: Dispatch<ServicesAction>) => {
+		try {
+			const { data } = await api.addService(services);
+
+			dispatch({
+				type: ServicesActionType.ADD_SERVICE,
+				payload: data,
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+export const DeleteService =
+	(_id: number) => async (dispatch: Dispatch<ServicesAction>) => {
+		try {
+			const { data } = await api.deleteService(_id);
+
+			dispatch({
+				type: ServicesActionType.DELETE_SERVICE,
+				payload: data,
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+export const GetContact = () => async (dispatch: Dispatch<ContactAction>) => {
+	try {
+		const { data } = await api.getContact();
+
+		dispatch({
+			type: ContactActionType.GET_CONTACT,
+			payload: data,
+		});
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const UpdateContact =
+	(contact: contactType) => async (dispatch: Dispatch<ContactAction>) => {
+		try {
+			const { data } = await api.updateContact(contact);
+
+			dispatch({
+				type: ContactActionType.UPDATE_CONTACT,
 				payload: data,
 			});
 		} catch (error) {

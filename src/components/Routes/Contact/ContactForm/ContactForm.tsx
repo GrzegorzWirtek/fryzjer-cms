@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import './ContactForm.scss';
 import FormError from '../FormError/FormError';
-import * as api from '../../../../api';
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../../../../state';
 
-type propsType = {
-	updateData: (contacts: api.contactDataType) => void;
-	cancelUpdatingData: () => void;
-};
-
-const ContactForm: React.FC<propsType> = ({
-	updateData,
-	cancelUpdatingData,
-}) => {
+const ContactForm = () => {
 	const [formErrorInfo, setFormErrorInfo] = useState('');
+
+	const dispatch = useDispatch();
+	const { HideForm, UpdateContact } = bindActionCreators(
+		actionCreators,
+		dispatch,
+	);
 
 	const getInputsValue = (e: React.SyntheticEvent) => {
 		e.preventDefault();
@@ -58,9 +58,17 @@ const ContactForm: React.FC<propsType> = ({
 		} else if (tel.length !== 9 || !/^\d+$/.test(tel)) {
 			setFormErrorInfo('Błędny numer telefonu');
 		} else {
-			updateData({ street, buildingNr, apartmentNr, zipCode, city, info, tel });
+			UpdateContact({
+				street,
+				buildingNr,
+				apartmentNr,
+				zipCode,
+				city,
+				info,
+				tel,
+			});
 			setFormErrorInfo('');
-			cancelUpdatingData();
+			HideForm();
 		}
 	};
 
@@ -121,8 +129,8 @@ const ContactForm: React.FC<propsType> = ({
 				</button>
 				<button
 					type='button'
-					className='contact-form__submit-btn'
-					onClick={cancelUpdatingData}>
+					className='contact-form__cancel-btn'
+					onClick={HideForm}>
 					Anuluj
 				</button>
 			</form>

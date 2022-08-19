@@ -1,5 +1,9 @@
 import React from 'react';
 import './ServiceAddFrom.scss';
+import { StateType } from '../../../../state/reducers';
+import { useSelector, useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../../../../state';
 
 export type newServiceType = {
 	text: string;
@@ -7,15 +11,11 @@ export type newServiceType = {
 	index: number;
 };
 
-interface propsType {
-	handleCancel: () => void;
-	handleAddNewService: (newService: newServiceType) => void;
-}
+const ServiceAddFrom = () => {
+	const { services } = useSelector((state: StateType) => state);
+	const dispatch = useDispatch();
+	const { AddService, HideForm } = bindActionCreators(actionCreators, dispatch);
 
-const ServiceAddFrom: React.FC<propsType> = ({
-	handleCancel,
-	handleAddNewService,
-}) => {
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 		const target = e.target as typeof e.target & {
@@ -27,8 +27,23 @@ const ServiceAddFrom: React.FC<propsType> = ({
 		const price = target.price.value;
 		const index = target.index.value;
 
-		const newService = { text, price, index };
-		handleAddNewService(newService);
+		const newServices = createNewServicesOrder({ text, price, index });
+		AddService(newServices);
+		HideForm();
+	};
+
+	const createNewServicesOrder = (newService: newServiceType) => {
+		const { text, price, index } = newService;
+
+		const newServices = services.map((item) => {
+			return { text: item.text, price: item.price };
+		});
+
+		newServices.splice(index - 1, 0, {
+			text,
+			price,
+		});
+		return newServices;
 	};
 
 	return (
@@ -60,8 +75,8 @@ const ServiceAddFrom: React.FC<propsType> = ({
 			</button>
 			<button
 				type='button'
-				onClick={handleCancel}
-				className='service-add-form__cancel'>
+				className='service-add-form__cancel'
+				onClick={() => HideForm()}>
 				Anuluj
 			</button>
 		</form>

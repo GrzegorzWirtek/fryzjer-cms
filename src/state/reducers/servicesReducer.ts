@@ -16,6 +16,10 @@ const reducer = (
 			return action.payload;
 		case ServicesActionType.UPDATE_SERVICE:
 			return action.payload;
+		case ServicesActionType.ADD_SERVICE:
+			return action.payload;
+		case ServicesActionType.DELETE_SERVICE:
+			return action.payload;
 		default:
 			return state;
 	}
