@@ -1,3 +1,5 @@
+@import '../../sass/variable.scss';
+
 .popup{
   position: fixed;
   top: 0;
@@ -8,11 +10,32 @@
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
+  background-color: $popup-bcg-color;
+  z-index: 4;
 
-  background-color: rgb(249, 249, 229);
-  z-index: 1;
+  &__wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 92%;
+    max-width: $popup-max-width;
+    padding: 45px 30px;
+    -webkit-box-shadow: 5px 5px 13px 1px rgba(0, 0, 0, 0.69);
+    -moz-box-shadow: 5px 5px 13px 1px rgba(0, 0, 0, 0.69);
+    box-shadow: 5px 5px 13px 1px rgba(0, 0, 0, 0.69);
+  }
 
   &__text{
     flex-basis: 100%;
+    font-size: $font-size-1;
+    margin: 10px 0;
+  }
+
+  &__button{
+    @include nav-button();
+  }
+
+  &__button--no{
+    @include nav-button-no()
   }
 }

@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700;800&family=Lobster&display=swap');
+
+$font-family-1: 'Kanit', sans-serif;
+$font-family-2: 'Lobster', cursive;
+
+$bcg-transition: 0.2s;
+$transition-time: 0.2s;
+
+$font-size-1: 1.2rem;
+$font-size-5: 1.6rem;
+
+$edit-button-color: #ffc14e;
+$edit-button-color-hover: #ab7002;
+$icon-color-svg-filter: invert(77%) sepia(33%) saturate(920%) hue-rotate(338deg) brightness(105%) contrast(101%);
+$icon-color-svg-filter-hover: invert(37%) sepia(98%) saturate(662%) hue-rotate(10deg) brightness(97%) contrast(98%);
+
+//NAV
+$nav-hover-color: rgba(255, 255, 255, 0.537);
+$logout-color: rgb(255, 62, 62);
+$logout-color-hover: rgb(193, 45, 45);
+
+//HAM
+$ham-width: 38px;
+$ham-height: 20px;
+$ham-item-height: 2px;
+
+//BUTTON
+$button-padding-horizontal: 7px;
+$button-padding-vertical: 20px;
+$button-color-1: #24192e;
+$button-color-1-hover: rgb(64, 47, 80);
+$button-width: 200px;
+$button-yes-color: $button-color-1;
+$button-no-color: #57580e;
+$button-yes-color-hover: $button-color-1-hover;
+$button-no-color-hover: #616231;
+
+//POPUP
+$popup-max-width: 500px;
+$popup-bcg-color: rgb(249, 249, 229);
+
+//HEADER
+$title-font-size-mobile: 1.3rem;
+$subtitle-font-size-mobile: 1.1rem;
+$title-font-size: 2rem;
+$subtitle-font-size: 1.9rem;
+$header-bcg-color: #302e46;
+$header-height: auto;
+
+$font-size-5: 2rem;
+
+$min-width-desktop: 800px;
+
+//HOME
+$home-bcg-button-color: rgba(0, 0, 0, 0.467);
+
+//LOGIN
+$login-form-width: 200px;
+
+//SERVICES
+$service-max-width: 800px;
+$edit-icon-height: 25px;
+
+//CONTACT
+$contact-max-width: 500px;
+$contact-title-margin-bottom: 20px;
+$contact-item-margin-bottom: 5px;
+$phone-icon-width: 26px;
+$phone-font-size: 1.5rem;
+$phone-color-svg-filter: invert(100%) sepia(0%) saturate(7433%) hue-rotate(181deg) brightness(110%) contrast(99%);
+
+@mixin blur-area {
+  padding: 40px 25px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.231);
+  backdrop-filter: blur(7px);
+  -webkit-box-shadow: 5px 5px 13px 1px rgba(0, 0, 0, 0.69);
+  -moz-box-shadow: 5px 5px 13px 1px rgba(0, 0, 0, 0.69);
+  box-shadow: 5px 5px 13px 1px rgba(0, 0, 0, 0.69);
+}
+
+@mixin edit-button {
+  width: 100%;
+  max-width: 360px;
+  margin: 20px auto;
+  padding: 8px 25px;
+  outline: none;
+  border: 2px solid $edit-button-color;
+  color: $edit-button-color;
+  background-color: rgba(0, 0, 0, 0.412);
+  cursor: pointer;
+  transition: $transition-time;
+
+  &:hover{
+    color: $edit-button-color-hover;
+    border: 2px solid $edit-button-color-hover;
+  }
+}
+
+@mixin nav-button {
+  width: 46%;
+  margin: 20px auto;
+  padding: 8px 25px;
+  outline: none;
+  border: none;
+  background-color: $button-yes-color;
+  color: white;
+  cursor: pointer;
+  transition: $transition-time;
+
+  &:hover{
+    background-color: $button-yes-color-hover;
+  }
+}
+
+@mixin nav-button-no {
+  background-color: $button-no-color;
+
+  &:hover{
+    background-color: $button-no-color-hover;
+  }
+}
+
+@mixin input {
+  margin: 10px 0;
+  padding: 2px 5px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+  background-color: $popup-bcg-color;
+}

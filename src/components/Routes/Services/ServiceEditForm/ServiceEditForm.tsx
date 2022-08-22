@@ -30,6 +30,12 @@ const ServiceEditForm = () => {
 		HideForm();
 	};
 
+	const handlePriceChange = (e: string) => {
+		if (e.length) {
+			setNewPrice(parseFloat(e));
+		} else setNewPrice(0);
+	};
+
 	const handleSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
 		const target = e.target as typeof e.target & {
@@ -48,38 +54,41 @@ const ServiceEditForm = () => {
 	};
 
 	return (
-		<form className='service-edit-form' onSubmit={handleSubmit}>
-			<input
-				autoFocus
-				onFocus={handleFocus}
-				type='text'
-				name='text'
-				value={newText}
-				onChange={(e) => setNewText(e.target.value)}
-				placeholder='Nazwa usługi'
-				required
-				className='service-edit-form__title'
-			/>
-			<input
-				type='number'
-				name='number'
-				value={newPrice}
-				onChange={(e) => setNewPrice(parseFloat(e.target.value))}
-				placeholder='Cena usługi'
-				required
-				className='service-edit-form__price'
-			/>{' '}
-			<span className='service-edit-form__span'>zł</span>
-			<button type='submit' className='service-edit-form__submit'>
-				Zatwierdź
-			</button>
-			<button
-				type='button'
-				onClick={handleCancel}
-				className='service-edit-form__cancel'>
-				Anuluj
-			</button>
-		</form>
+		<div className='service-edit-form-wrapper'>
+			<form className='service-edit-form' onSubmit={handleSubmit}>
+				<h2 className='service-edit-form__title'>Edytowanie usługi</h2>
+				<input
+					autoFocus
+					onFocus={handleFocus}
+					type='text'
+					name='text'
+					value={newText}
+					onChange={(e) => setNewText(e.target.value)}
+					placeholder='Nazwa usługi'
+					required
+					className='service-edit-form__service'
+				/>
+				<input
+					type='number'
+					name='number'
+					value={newPrice}
+					onChange={(e) => handlePriceChange(e.target.value)}
+					placeholder='Cena usługi'
+					required
+					className='service-edit-form__price'
+				/>{' '}
+				<span className='service-edit-form__span'>zł</span>
+				<button type='submit' className='service-edit-form__button --submit'>
+					Zatwierdź
+				</button>
+				<button
+					type='button'
+					onClick={handleCancel}
+					className='service-edit-form__button service-edit-form__button--cancel'>
+					Anuluj
+				</button>
+			</form>
+		</div>
 	);
 };
 

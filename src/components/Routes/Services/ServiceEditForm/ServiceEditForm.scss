@@ -1,6 +1,6 @@
 @import '../../../../sass/variable.scss';
 
-.contact-form-wrapper{
+.service-edit-form-wrapper{
   position: fixed;
   top: 0;
   left: 0;
@@ -14,12 +14,12 @@
   background-color: $popup-bcg-color;
 }
 
-.contact-form{
+.service-edit-form{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   min-width: 320px;
-  max-width: 570px;
+  max-width: 500px;
   padding: 45px 35px;
   margin: 0 4vw;
   -webkit-box-shadow: 5px 5px 13px 1px rgba(0, 0, 0, 0.69);
@@ -32,17 +32,19 @@
     margin-bottom: 20px;
   }
 
-  &__input{
+  &__service{
     @include input();
-    width: 100%;
+    flex-basis: 100%;
+  }
 
-    @media (min-width: 480px){
-      width: 46%;
-    }
+  &__price{
+    @include input();
+    width: 90%;
+  }
 
-    &--street, &--info, &--tel{
-      flex-basis: 100%
-    }
+  &__span{
+    width: 10%;
+    margin-top: 16px;
   }
 
   &__button{

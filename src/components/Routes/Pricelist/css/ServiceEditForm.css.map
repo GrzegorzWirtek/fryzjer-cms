@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "../ServiceEditForm/ServiceEditForm.scss"
-    ],
-    "names": [],
-    "file": "ServiceEditForm.css"
-}

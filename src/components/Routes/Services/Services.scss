@@ -1,0 +1,86 @@
+@import '../../../sass/variable.scss';
+
+.services{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  min-height: calc(100vh - 68px);
+  margin-top: 68px;
+  background-image: url('../../../../public/images/pricelist-mobile.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  @media(min-width: $min-width-desktop){
+    background-image: url('../../../../public/images/pricelist.png');
+  }
+
+  &__wrapper{
+    @include blur-area();
+    position: relative;
+    width: 96%;
+    max-width: $service-max-width;
+  }
+
+  &__title{
+    color: white;
+    font-size: $font-size-5;
+  }
+}
+
+.service{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: $service-max-width;
+  margin: 0 auto;
+  padding: 10px 0;
+
+  &__index{
+    width: 30px;
+    text-align: left;
+    color: white;
+  }
+
+  &__title{
+    flex-basis: 70%;
+    text-align: left;
+    color: white;
+  }
+
+  &__price{
+    flex-basis: 15%;
+    color: white;
+  }
+
+  &__edit-icon{
+    height: $edit-icon-height;
+    margin-right: 10px;
+    transform: translateY(-3px);
+    transition: $transition-time;
+    filter: $icon-color-svg-filter;
+    cursor: pointer;
+
+    &:hover{
+      filter: $icon-color-svg-filter-hover;
+    }
+  }
+
+  &__delete-icon{
+    height: $edit-icon-height + 1;
+    transition: $transition-time;
+    transform: translateY(-1px);
+    filter: $icon-color-svg-filter;
+    cursor: pointer;
+
+    &:hover{
+      filter: $icon-color-svg-filter-hover;
+    }
+  }
+
+  &__add-new{
+    @include edit-button()
+  }
+}

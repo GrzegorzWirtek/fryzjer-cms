@@ -1,19 +1,76 @@
-@import '../../../sass/variablex.scss';
+@import '../../../sass/variable.scss';
 
 .contact{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 68px);
+  margin-top: 68px;
+  background-image: url('../../../../public/images/contact-mobile.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &__wrapper{
+    @include blur-area();
+
+    position: relative;
+    width: 96%;
+    max-width: $contact-max-width;
+  }
+
+  @media(min-width: $min-width-desktop){
+    background-image: url('../../../../public/images/contact.png');
+  }
+
+  &__title{
+    font-size: $font-size-5;
+    color: white;
+    margin-bottom: $contact-title-margin-bottom;
+  }
+
+  
+  &__street{
+    color: white;
+    margin-bottom: $contact-item-margin-bottom;
+  }
+
+  &__city{
+    color: white;
+    margin-bottom: $contact-item-margin-bottom;
+  }
+  
+  &__info{
+    color: white;
+    margin-bottom: $contact-item-margin-bottom;
+  }
+  
   &__phone{
     display: flex;
     text-decoration: none;
-   justify-content: center;
+    justify-content: center;
+    transition: opacity $transition-time;
+
+    &:hover{
+      opacity: 0.5;
+    }
   }
 
   &__phone-img{
     width: $phone-icon-width;
+    filter: $phone-color-svg-filter;
+    margin-right: 10px;
   }
 
   &__phone-nr{
     outline: none;
     text-decoration: none;
-    color: black;
+    font-size: $phone-font-size;
+    color: white;
+  }
+
+  &__edit-btn{
+    @include edit-button();
   }
 }

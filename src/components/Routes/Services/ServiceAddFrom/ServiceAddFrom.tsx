@@ -1,5 +1,5 @@
-import React from 'react';
 import './ServiceAddFrom.scss';
+import React from 'react';
 import { StateType } from '../../../../state/reducers';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -47,39 +47,44 @@ const ServiceAddFrom = () => {
 	};
 
 	return (
-		<form className='service-add-form' onSubmit={handleSubmit}>
-			<input
-				type='text'
-				name='text'
-				placeholder='Nazwa usługi'
-				required
-				className='service-add-form__title'
-			/>
-			<input
-				type='number'
-				name='price'
-				placeholder='Cena usługi'
-				required
-				className='service-add-form__title'
-			/>{' '}
-			<span className='service-add-form__span'>zł</span>
-			<input
-				type='number'
-				name='index'
-				placeholder='Kolejność na liście'
-				required
-				className='service-add-form__title'
-			/>
-			<button type='submit' className='service-add-form__submit'>
-				Zatwierdź
-			</button>
-			<button
-				type='button'
-				className='service-add-form__cancel'
-				onClick={() => HideForm()}>
-				Anuluj
-			</button>
-		</form>
+		<div className='service-add-form-wrapper'>
+			<form className='service-add-form' onSubmit={handleSubmit}>
+				<h2 className='service-add-form__title'>Dodawanie usługi</h2>
+				<input
+					type='text'
+					name='text'
+					placeholder='Nazwa usługi'
+					required
+					className='service-add-form__service'
+				/>
+				<input
+					type='number'
+					name='price'
+					placeholder='Cena usługi'
+					required
+					className='service-add-form__price'
+				/>{' '}
+				<span className='service-add-form__span'>zł</span>
+				<input
+					type='number'
+					name='index'
+					placeholder='Kolejność na liście'
+					required
+					className='service-add-form__order'
+				/>
+				<button
+					type='submit'
+					className='service-add-form__button service-add-form__button--submit'>
+					Zatwierdź
+				</button>
+				<button
+					type='button'
+					className='service-add-form__button service-add-form__button--cancel'
+					onClick={() => HideForm()}>
+					Anuluj
+				</button>
+			</form>
+		</div>
 	);
 };
 

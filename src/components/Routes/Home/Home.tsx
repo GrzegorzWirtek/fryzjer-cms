@@ -6,7 +6,7 @@ const Home = () => {
 		<main className='home'>
 			<section className='home__nav'>
 				<p className='home__title'>Edytuj dane</p>
-				<NavLink className={'home__link'} to='/pricelist'>
+				<NavLink className={'home__link'} to='/services'>
 					Cennik
 				</NavLink>
 				<NavLink className={'home__link'} to='/contact'>

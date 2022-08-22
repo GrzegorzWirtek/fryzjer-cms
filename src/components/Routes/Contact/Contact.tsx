@@ -33,27 +33,30 @@ const Contact = () => {
 	return (
 		<>
 			<section className='contact'>
-				<p className='contact__street'>
-					ul. {street} {buildingNr} lok.
-					{apartmentNr}
-				</p>
-				<p className='contact__city'>
-					{zipCodeToString} {city}
-				</p>
-				<p className='contact__info'>{info}</p>
-				<a href={`tel:${tel}`} className='contact__phone'>
-					<img
-						src='icons/phone.svg'
-						alt='Phone icon'
-						className='contact__phone-img'
-					/>
-					<p className='contact__phone-nr'>{telToString}</p>
-				</a>
-				<button
-					className='contact__edit-btn'
-					onClick={() => ShowForm({ formName: 'contactForm' })}>
-					Edytuj
-				</button>
+				<div className='contact__wrapper'>
+					<h2 className='contact__title'>Kontakt</h2>
+					<p className='contact__street'>
+						ul. {street} {buildingNr} lok.
+						{apartmentNr}
+					</p>
+					<p className='contact__city'>
+						{zipCodeToString} {city}
+					</p>
+					<p className='contact__info'>{info}</p>
+					<a href={`tel:${tel}`} className='contact__phone'>
+						<img
+							src='icons/phone.svg'
+							alt='Phone icon'
+							className='contact__phone-img'
+						/>
+						<p className='contact__phone-nr'>{telToString}</p>
+					</a>
+					<button
+						className='contact__edit-btn'
+						onClick={() => ShowForm({ formName: 'contactForm' })}>
+						Edytuj
+					</button>
+				</div>
 			</section>
 			{contactForm && <ContactForm />}
 		</>

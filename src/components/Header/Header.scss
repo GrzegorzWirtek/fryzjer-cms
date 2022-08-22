@@ -1,7 +1,10 @@
-@import '../../sass/variablex.scss';
+@import '../../sass/variable.scss';
 
 .header{
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

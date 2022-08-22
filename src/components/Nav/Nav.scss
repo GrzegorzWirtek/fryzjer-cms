@@ -1,33 +1,55 @@
-@import '../../sass/variablex.scss';
+@import '../../sass/variable.scss';
 
 .nav{
   position: fixed;
-  right: 20px;
-  top: 20px;
+  right: 0;
+  top: -50vh;
+  width: 100%;
+  height: 50vh;
+  background-color: black;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   z-index: 2;
+  transition: transform 0.2s;
+
+  &--active{
+    transform: translateY(50vh);
+
+    @media (min-width: $min-width-desktop){
+      transform: translateY(0);
+      transition: transform 0s;
+    }
+  }
+
+  @media (min-width: $min-width-desktop){
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+  }
 
   &__link{
-    margin-left: 20px;
+    margin-left: 0;
+    margin-bottom: 20px;
     outline: none;
     text-decoration: none;
     font-family: $font-family-1;
     color: white;
-    transition: $transition-time;
+    transition: color $transition-time;
     cursor: pointer;
+
+    @media (min-width: $min-width-desktop){
+      margin-left: 20px;
+      margin-bottom: 0;
+    }
 
     &:hover{
       color: $nav-hover-color;
     }
-
-    &--logout{
-      font-weight: 600;
-      color: $logout-color;
-
-      &:hover{
-        color: $logout-color-hover;
-      }
-    }
-      
   }
 }

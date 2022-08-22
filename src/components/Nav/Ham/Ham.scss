@@ -1,0 +1,39 @@
+@import '../../../sass/variable.scss';
+
+.ham{
+  position: fixed;
+  width: $ham-width;
+  height: $ham-height;
+  right: 20px;
+  top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 3;
+  visibility: visible;
+
+  @media(min-width: $min-width-desktop){
+    visibility: hidden;
+  }
+
+  &__item{
+    height: $ham-item-height;
+    width: 100%;
+    background-color: white;
+    transition: transform 0.2s;
+  }
+}
+
+.ham--active > .ham__item:nth-child(1){
+  transform: translateY(0px) rotate(30deg);
+}
+
+.ham--active > .ham__item:nth-child(2){
+  transform: translateY(($ham-height - $ham-item-height) / 2) rotate(-30deg);
+}
+
+.ham--active > .ham__item:nth-child(3){
+  transform: translateY(0px) rotate(-30deg);
+}
+

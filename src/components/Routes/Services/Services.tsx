@@ -1,4 +1,4 @@
-import './Pricelist.scss';
+import './Services.scss';
 import { useEffect, useState } from 'react';
 import ServiceEditForm from './ServiceEditForm/ServiceEditForm';
 import Popup from '../../Popup/Popup';
@@ -14,7 +14,7 @@ export type serviceToEditType = {
 	text: string;
 };
 
-const Pricelist = () => {
+const Services = () => {
 	const {
 		services,
 		formsVisibility: { serviceEditForm, serviceAddForm },
@@ -86,18 +86,21 @@ const Pricelist = () => {
 	));
 
 	return (
-		<>
+		<section className='services'>
 			{popup}
-			<button
-				className='service__add-new'
-				onClick={() => ShowForm({ formName: 'serviceAddForm' })}>
-				Dodaj nową usługę
-			</button>
-			<section className='pracelist'>
-				{prices} {editForm} {addForm}
-			</section>
-		</>
+			{editForm}
+			{addForm}
+			<div className='services__wrapper'>
+				<h2 className='services__title'>Cennik</h2>
+				<button
+					className='service__add-new'
+					onClick={() => ShowForm({ formName: 'serviceAddForm' })}>
+					Dodaj nową usługę
+				</button>
+				<section className='pricelist'>{prices}</section>
+			</div>
+		</section>
 	);
 };
 
-export default Pricelist;
+export default Services;

@@ -1,17 +1,31 @@
-@import '../../../sass/variablex.scss';
+@import '../../../sass/variable.scss';
 
 
 .home{
   display: flex;
-  height: calc(100vh - 70px);
+  min-height: calc(100vh - 68px);
+  margin-top: 68px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
+  position: relative;
+  display: flex;
+  background-color: black;
+  background-image: url('../../../../public/images/header-mobile.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @media(min-width: $min-width-desktop){
+    background-image: url('../../../../public/images/header.png');
+    background-position: right;
+  }
+
   &__title{
-    font-weight: 500;
     font-size: $font-size-5;
-    margin-bottom: 14px;
+    margin-bottom: 20px;
+    color: white;
   }
 
   &__nav{
@@ -22,15 +36,17 @@
   &__link{
     outline: none;
     text-decoration: none;
-    background-color: $button-color-1;
-    transition: $transition-time;
     padding: $button-padding-horizontal $button-padding-vertical;
     width: $button-width;
     margin-bottom: 20px;
-    color: white;
+    color: $edit-button-color;
+    border: 2px solid $edit-button-color;
+    background-color: $home-bcg-button-color;
+    transition: $transition-time;
 
     &:hover{
-      background-color: $button-color-1-hover;
+      color: $edit-button-color-hover;
+    border: 2px solid $edit-button-color-hover;
     }
   }
 }
