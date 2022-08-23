@@ -16,7 +16,7 @@
 
   &__message{
     flex-basis: 100%;
-    color: red;
+    color: $error-color;
     font-weight: 600;
     letter-spacing: 1px;
   }

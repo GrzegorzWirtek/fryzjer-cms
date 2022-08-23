@@ -1,3 +1,5 @@
+import './FormError.scss';
+
 type propsType = {
 	info: string;
 };

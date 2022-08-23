@@ -1,0 +1,11 @@
+@import '../../../../sass/variable.scss';
+
+.form-error{
+  flex-basis: 100%;
+  text-align: center;
+
+  &__title{
+    color: $error-color;
+    font-weight: bold;
+  }
+}

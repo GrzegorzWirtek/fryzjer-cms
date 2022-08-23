@@ -74,9 +74,9 @@ const ContactForm = () => {
 
 	return (
 		<div className='contact-form-wrapper'>
-			{formErrorInfo.length ? <FormError info={formErrorInfo} /> : null}
 			<form className='contact-form' onSubmit={getInputsValue}>
 				<h2 className='contact-form__title'>Edytowanie adresu</h2>
+				{formErrorInfo.length ? <FormError info={formErrorInfo} /> : null}
 				<input
 					type='text'
 					name='street'
@@ -115,7 +115,6 @@ const ContactForm = () => {
 					type='text'
 					name='info'
 					placeholder='Dodatkowe informacje'
-					required
 					className='contact-form__input contact-form__input--info'
 				/>
 				<input
