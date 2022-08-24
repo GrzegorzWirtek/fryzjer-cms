@@ -6,6 +6,7 @@ import { StateType } from '../../../state/reducers';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../../state';
+import Spinner from '../../Spinner/Spinner';
 
 export type serviceToEditType = {
 	_id: number;
@@ -33,8 +34,7 @@ const Galery = () => {
 
 	return (
 		<section className='services'>
-			<p>yo man</p>
-			{images}
+			{galery.length ? images : <Spinner />}
 		</section>
 	);
 };

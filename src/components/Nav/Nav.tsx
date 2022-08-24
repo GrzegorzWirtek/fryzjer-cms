@@ -57,7 +57,9 @@ const Nav = () => {
 				<NavLink className={'nav__link'} to='/galery' onClick={closeHam}>
 					Galeria
 				</NavLink>
-				<p className={'nav__link'} onClick={() => setPopupActive(true)}>
+				<p
+					className={'nav__link nav__link--logout'}
+					onClick={() => setPopupActive(true)}>
 					Wyloguj
 				</p>
 			</nav>

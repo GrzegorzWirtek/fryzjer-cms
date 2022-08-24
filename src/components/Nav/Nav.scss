@@ -48,8 +48,16 @@
       margin-bottom: 0;
     }
 
+    &--logout{
+      color: $logout-color;
+    }
+
     &:hover{
       color: $nav-hover-color;
+    }
+
+    &--logout:hover{
+      color: $logout-color-hover;
     }
   }
 }
