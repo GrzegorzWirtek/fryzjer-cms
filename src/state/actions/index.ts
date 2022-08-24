@@ -3,6 +3,7 @@ import {
 	ServicesActionType,
 	FormsVisibilityActionType,
 	ContactActionType,
+	GaleryActionType,
 } from '../action-types';
 
 export type loginType = {
@@ -80,6 +81,18 @@ interface UpdateContact {
 	payload: contactType;
 }
 
+export type galeryType = { url: string; name: string }[];
+
+interface GetImages {
+	type: GaleryActionType.GET_IMAGES;
+	payload: galeryType;
+}
+
+// interface UploadImage {
+// 	type: GaleryActionType.UPLOAD_IMAGE;
+// 	payload: {image: File}
+// }
+
 export type LoginAction = CheckLogin | LogOut;
 export type FormsVisibilityAction = ShowForm | HideForm;
 export type ServicesAction =
@@ -89,3 +102,4 @@ export type ServicesAction =
 	| DeleteService;
 
 export type ContactAction = GetContact | UpdateContact;
+export type GaleryAction = GetImages;

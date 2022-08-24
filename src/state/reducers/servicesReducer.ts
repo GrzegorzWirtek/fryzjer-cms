@@ -1,14 +1,10 @@
 import { ServicesActionType } from '../action-types';
-import { ServicesAction } from '../actions';
+import { ServicesAction, serviceType } from '../actions';
 
-const initialState: {
-	_id: number;
-	text: string;
-	price: number;
-}[] = [];
+const initialState = [] as serviceType[];
 
 const reducer = (
-	state: typeof initialState = initialState,
+	state: serviceType[] = initialState,
 	action: ServicesAction,
 ) => {
 	switch (action.type) {

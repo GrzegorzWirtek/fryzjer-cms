@@ -9,7 +9,7 @@ const Header = () => {
 		<header className={`header ${isLoggedIn ? 'header--login' : ''}`}>
 			<h1
 				className={`header__title ${isLoggedIn ? 'header__title--login' : ''}`}>
-				Fryzjer męski
+				Fryzjer Męski
 				<p
 					className={`header__subtitle ${
 						isLoggedIn ? 'header__subtitle--login' : ''

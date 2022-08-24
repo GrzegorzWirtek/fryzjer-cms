@@ -1,11 +1,11 @@
 @import '../../../../sass/variable.scss';
 
 .service-edit-form-wrapper{
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
-  right: 0;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

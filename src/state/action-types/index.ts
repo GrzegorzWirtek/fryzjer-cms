@@ -19,3 +19,8 @@ export enum ContactActionType {
 	GET_CONTACT = 'getContact',
 	UPDATE_CONTACT = 'updateContact',
 }
+
+export enum GaleryActionType {
+	GET_IMAGES = 'getImages',
+	UPLOAD_IMAGE = 'uploadImage',
+}

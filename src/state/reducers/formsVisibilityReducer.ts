@@ -5,6 +5,7 @@ const initialState = {
 	serviceEditForm: false,
 	serviceAddForm: false,
 	contactForm: false,
+	galeryForm: false,
 	currentId: 0,
 };
 

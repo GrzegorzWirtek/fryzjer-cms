@@ -4,6 +4,7 @@ import {
 	ServicesActionType,
 	FormsVisibilityActionType,
 	ContactActionType,
+	GaleryActionType,
 } from '../action-types';
 import {
 	LoginAction,
@@ -12,6 +13,7 @@ import {
 	FormsVisibilityAction,
 	ContactAction,
 	contactType,
+	GaleryAction,
 } from '../actions';
 import { Dispatch } from 'react';
 
@@ -156,3 +158,15 @@ export const UpdateContact =
 			console.log(error);
 		}
 	};
+
+export const GetImages = () => async (dispatch: Dispatch<GaleryAction>) => {
+	try {
+		const data = await api.getImages();
+		dispatch({
+			type: GaleryActionType.GET_IMAGES,
+			payload: data,
+		});
+	} catch (error) {
+		console.log(error);
+	}
+};
