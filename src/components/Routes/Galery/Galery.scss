@@ -1,0 +1,39 @@
+@import '../../../sass/variable.scss';
+
+.galery{
+  margin-top: 68px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &__button-wrapper{
+    flex-basis: 100%;
+  }
+}
+
+.galery-item{
+  position: relative;
+  margin: 20px;
+
+  &__delete-wrapper{
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    background-color: black;
+    padding: 4px 4px 0 4px;
+    border-radius: 4px;
+    z-index: 1;
+  }
+
+  &__delete-icon{
+    height: $edit-icon-height + 1;
+    transition: $transition-time;
+    transform: translateY(-1px);
+    filter: $icon-color-svg-filter;
+    cursor: pointer;
+
+    &:hover{
+      filter: $icon-color-svg-filter-hover;
+    }
+  }
+}

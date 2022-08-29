@@ -5,7 +5,7 @@ import {
 	// uploadBytes,
 	listAll,
 	getDownloadURL,
-	// deleteObject,
+	deleteObject,
 	getMetadata,
 } from 'firebase/storage';
 import storage from '../firebase/firebase';
@@ -44,4 +44,13 @@ export const getImages = async () => {
 		return { url, name };
 	});
 	return Promise.all(urls);
+};
+
+export const deleteImage = async (imageName: string) => {
+	const imageRef = ref(storage, imageName);
+	try {
+		await deleteObject(imageRef);
+	} catch (error) {
+		console.log(error);
+	}
 };

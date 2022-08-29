@@ -23,4 +23,5 @@ export enum ContactActionType {
 export enum GaleryActionType {
 	GET_IMAGES = 'getImages',
 	UPLOAD_IMAGE = 'uploadImage',
+	DELETE_IMAGE = 'deleteImage',
 }

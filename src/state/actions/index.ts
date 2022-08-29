@@ -93,6 +93,11 @@ interface GetImages {
 // 	payload: {image: File}
 // }
 
+interface DeleteImage {
+	type: GaleryActionType.DELETE_IMAGE;
+	payload: galeryType;
+}
+
 export type LoginAction = CheckLogin | LogOut;
 export type FormsVisibilityAction = ShowForm | HideForm;
 export type ServicesAction =
@@ -102,4 +107,4 @@ export type ServicesAction =
 	| DeleteService;
 
 export type ContactAction = GetContact | UpdateContact;
-export type GaleryAction = GetImages;
+export type GaleryAction = GetImages | DeleteImage;

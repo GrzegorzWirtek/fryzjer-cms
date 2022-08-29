@@ -64,6 +64,7 @@ export const LogOut = () => {
 export const ShowForm =
 	(formNameAndServiceId: { formName: string; currentId?: number }) =>
 	(dispatch: Dispatch<FormsVisibilityAction>) => {
+		console.log('poka');
 		dispatch({
 			type: FormsVisibilityActionType.SHOW,
 			payload: formNameAndServiceId,
@@ -170,3 +171,17 @@ export const GetImages = () => async (dispatch: Dispatch<GaleryAction>) => {
 		console.log(error);
 	}
 };
+
+export const DeleteImage =
+	(imageName: string) => async (dispatch: Dispatch<GaleryAction>) => {
+		try {
+			await api.deleteImage(imageName);
+			const data = await api.getImages();
+			dispatch({
+				type: GaleryActionType.GET_IMAGES,
+				payload: data,
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
