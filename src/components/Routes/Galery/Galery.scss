@@ -1,13 +1,19 @@
 @import '../../../sass/variable.scss';
 
 .galery{
-  margin-top: 68px;
+  margin-top: $header-height;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  min-height:calc( 100vh - $header-height);
+  background-color: $galery-bcg-color;
 
   &__button-wrapper{
     flex-basis: 100%;
+  }
+
+  &__add-button{
+    @include edit-button 
   }
 }
 
@@ -23,6 +29,10 @@
     padding: 4px 4px 0 4px;
     border-radius: 4px;
     z-index: 1;
+  }
+
+  &__image{
+    max-width: 80vw;
   }
 
   &__delete-icon{

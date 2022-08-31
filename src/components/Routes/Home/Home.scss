@@ -3,8 +3,8 @@
 
 .home{
   display: flex;
-  min-height: calc(100vh - 68px);
-  margin-top: 68px;
+  min-height: calc(100vh - $header-height);
+  margin-top: $header-height;
   flex-direction: column;
   align-items: center;
   justify-content: center;

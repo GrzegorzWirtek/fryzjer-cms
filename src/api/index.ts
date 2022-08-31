@@ -2,7 +2,7 @@ import axios from 'axios';
 import { contactType, serviceType } from '../state/actions';
 import {
 	ref,
-	// uploadBytes,
+	uploadBytes,
 	listAll,
 	getDownloadURL,
 	deleteObject,
@@ -44,6 +44,18 @@ export const getImages = async () => {
 		return { url, name };
 	});
 	return Promise.all(urls);
+};
+
+export const uploadImage = async (image: File) => {
+	try {
+		const imageName = `images/${Date.now() + image.name}`;
+		const imageRef = ref(storage, imageName);
+		await uploadBytes(imageRef, image);
+		// const data = await uploadBytes(imageRef, image);
+		// const url = await getDownloadURL(data.ref);
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 export const deleteImage = async (imageName: string) => {

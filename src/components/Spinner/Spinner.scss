@@ -1,7 +1,20 @@
+@import '../../sass/variable.scss';
+
+.spinner-wrapper{
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: calc(100vh - 68px);
+  margin-top: 68px;
+  width: 100%;
+  backdrop-filter: blur(3px);
+  background-color: $spinner-bcg-color;
+  z-index: 2;
+}
 
 .spinner {
   animation: rotate 2s linear infinite;
-  z-index: 2;
+  z-index: 3;
   position: absolute;
   top: 50%;
   left: 50%;

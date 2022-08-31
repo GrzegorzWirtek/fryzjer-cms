@@ -25,3 +25,8 @@ export enum GaleryActionType {
 	UPLOAD_IMAGE = 'uploadImage',
 	DELETE_IMAGE = 'deleteImage',
 }
+
+export enum ProcessingActionType {
+	PROCESSING = 'processing',
+	PROCESSING_DONE = 'processingDone',
+}

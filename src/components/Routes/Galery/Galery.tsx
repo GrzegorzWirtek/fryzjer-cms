@@ -1,13 +1,13 @@
 import './Galery.scss';
 import { useEffect, useState } from 'react';
 import Popup from '../../Popup/Popup';
+import UploadImageForm from './UploadImageForm/UploadImageForm';
 
 import { StateType } from '../../../state/reducers';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../../state';
 import Spinner from '../../Spinner/Spinner';
-// import FileInput from '../../FileInput/FileInput';
 
 export type serviceToEditType = {
 	_id: number;
@@ -17,14 +17,13 @@ export type serviceToEditType = {
 const Galery = () => {
 	const {
 		galery,
-		// formsVisibility: { deleting },
+		formsVisibility: { uploadImageForm },
+		processing,
 	} = useSelector((state: StateType) => state);
 	const dispatch = useDispatch();
-	const { GetImages, DeleteImage } = bindActionCreators(
-		actionCreators,
-		dispatch,
-	);
-	const [imageLoaded, setImageLoaded] = useState(false);
+	const { DeleteImage, GetImages, ShowForm, Processing, ProcessingDone } =
+		bindActionCreators(actionCreators, dispatch);
+
 	const [currentImageName, setCurrentImageName] = useState('');
 	const [popupActive, setPopupActive] = useState(false);
 
@@ -34,14 +33,25 @@ const Galery = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
+	const handleOnLoad = () => {
+		console.log('teraz onload', processing);
+		ProcessingDone();
+	};
+
 	const handlePopupActive = (name: string) => {
 		setCurrentImageName(name);
 		setPopupActive(true);
 	};
 
-	const handleDeleteImage = () => {
-		DeleteImage(currentImageName);
+	const handleShowUploadImageForm = () => {
+		ShowForm({ formName: 'uploadImageForm' });
+	};
+
+	const handleDeleteImage = async () => {
+		Processing();
 		setPopupActive(false);
+		await DeleteImage(currentImageName);
+		ProcessingDone();
 	};
 
 	const handleCancelDeleteImage = () => {
@@ -51,19 +61,21 @@ const Galery = () => {
 
 	const images = galery.map((image) => (
 		<div className='galery-item' key={image.name}>
-			<div className='galery-item__delete-wrapper'>
-				<img
-					src='icons/delete.svg'
-					alt='Delete icon'
-					className='galery-item__delete-icon'
-					onClick={() => handlePopupActive(image.name)}
-				/>
-			</div>
+			{processing ? null : (
+				<div className='galery-item__delete-wrapper'>
+					<img
+						src='icons/delete.svg'
+						alt='Delete icon'
+						className='galery-item__delete-icon'
+						onClick={() => handlePopupActive(image.name)}
+					/>
+				</div>
+			)}
 			<img
 				className='galery-item__image'
 				src={image.url}
 				alt={image.name}
-				onLoad={() => setImageLoaded(true)}></img>
+				onLoad={handleOnLoad}></img>
 		</div>
 	));
 
@@ -78,17 +90,22 @@ const Galery = () => {
 		/>
 	) : null;
 
+	const addImageButton = processing ? null : (
+		<div className='galery__button-wrapper'>
+			<button
+				className='galery__add-button'
+				onClick={handleShowUploadImageForm}>
+				Dodaj zdjęcie
+			</button>
+		</div>
+	);
+
 	return (
 		<section className='galery'>
-			{/* <FileInput /> */}
+			{uploadImageForm && <UploadImageForm />}
 			{popup}
-			{imageLoaded ? (
-				<div className='galery__button-wrapper'>
-					<button className='galery__add-button'>Dodaj zdjęcie</button>
-				</div>
-			) : (
-				<Spinner />
-			)}
+			{processing && <Spinner />}
+			{addImageButton}
 			{images}
 		</section>
 	);

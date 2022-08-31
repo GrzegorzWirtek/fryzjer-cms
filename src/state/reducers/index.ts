@@ -4,6 +4,7 @@ import servicesReducer from './servicesReducer';
 import formsVisibilityReducer from './formsVisibilityReducer';
 import contactReducer from './contactReducer';
 import galeryReducer from './galeryReducer';
+import processingReducer from './processingReducer';
 
 const reducers = combineReducers({
 	login: loginReducer,
@@ -11,6 +12,7 @@ const reducers = combineReducers({
 	formsVisibility: formsVisibilityReducer,
 	contact: contactReducer,
 	galery: galeryReducer,
+	processing: processingReducer,
 });
 
 export default reducers;

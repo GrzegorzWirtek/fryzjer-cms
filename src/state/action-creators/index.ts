@@ -5,6 +5,7 @@ import {
 	FormsVisibilityActionType,
 	ContactActionType,
 	GaleryActionType,
+	ProcessingActionType,
 } from '../action-types';
 import {
 	LoginAction,
@@ -14,6 +15,7 @@ import {
 	ContactAction,
 	contactType,
 	GaleryAction,
+	ProcessingAction,
 } from '../actions';
 import { Dispatch } from 'react';
 
@@ -172,6 +174,20 @@ export const GetImages = () => async (dispatch: Dispatch<GaleryAction>) => {
 	}
 };
 
+export const UploadImage =
+	(image: File) => async (dispatch: Dispatch<GaleryAction>) => {
+		try {
+			await api.uploadImage(image);
+			const data = await api.getImages();
+			dispatch({
+				type: GaleryActionType.GET_IMAGES,
+				payload: data,
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 export const DeleteImage =
 	(imageName: string) => async (dispatch: Dispatch<GaleryAction>) => {
 		try {
@@ -185,3 +201,17 @@ export const DeleteImage =
 			console.log(error);
 		}
 	};
+
+export const Processing = () => (dispatch: Dispatch<ProcessingAction>) => {
+	dispatch({
+		type: ProcessingActionType.PROCESSING,
+		payload: true,
+	});
+};
+
+export const ProcessingDone = () => (dispatch: Dispatch<ProcessingAction>) => {
+	dispatch({
+		type: ProcessingActionType.PROCESSING,
+		payload: false,
+	});
+};

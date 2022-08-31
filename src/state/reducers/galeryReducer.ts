@@ -9,6 +9,8 @@ const reducer = (state: galeryType = initialState, action: GaleryAction) => {
 			return action.payload;
 		case GaleryActionType.DELETE_IMAGE:
 			return action.payload;
+		case GaleryActionType.UPLOAD_IMAGE:
+			return action.payload;
 		default:
 			return state;
 	}

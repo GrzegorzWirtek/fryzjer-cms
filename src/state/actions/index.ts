@@ -4,6 +4,7 @@ import {
 	FormsVisibilityActionType,
 	ContactActionType,
 	GaleryActionType,
+	ProcessingActionType,
 } from '../action-types';
 
 export type loginType = {
@@ -88,14 +89,26 @@ interface GetImages {
 	payload: galeryType;
 }
 
-// interface UploadImage {
-// 	type: GaleryActionType.UPLOAD_IMAGE;
-// 	payload: {image: File}
-// }
+interface UploadImage {
+	type: GaleryActionType.UPLOAD_IMAGE;
+	payload: galeryType;
+}
 
 interface DeleteImage {
 	type: GaleryActionType.DELETE_IMAGE;
 	payload: galeryType;
+}
+
+export type processingType = boolean;
+
+interface Processing {
+	type: ProcessingActionType.PROCESSING;
+	payload: processingType;
+}
+
+interface ProcessingDone {
+	type: ProcessingActionType.PROCESSING_DONE;
+	payload: processingType;
 }
 
 export type LoginAction = CheckLogin | LogOut;
@@ -105,6 +118,6 @@ export type ServicesAction =
 	| UpdateService
 	| AddService
 	| DeleteService;
-
 export type ContactAction = GetContact | UpdateContact;
-export type GaleryAction = GetImages | DeleteImage;
+export type GaleryAction = GetImages | UploadImage | DeleteImage;
+export type ProcessingAction = Processing | ProcessingDone;

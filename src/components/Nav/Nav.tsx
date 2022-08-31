@@ -27,6 +27,7 @@ const Nav = () => {
 		closeHam();
 		navigate('/');
 	};
+
 	const handlePopuNo = () => {
 		setPopupActive(false);
 		closeHam();

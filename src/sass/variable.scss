@@ -34,6 +34,7 @@ $button-yes-color: $button-color-1;
 $button-no-color: #57580e;
 $button-yes-color-hover: $button-color-1-hover;
 $button-no-color-hover: #616231;
+$button-dispabled-color: rgba(100, 100, 100, 0.401);
 
 //POPUP
 $popup-max-width: 500px;
@@ -45,7 +46,7 @@ $subtitle-font-size-mobile: 1.1rem;
 $title-font-size: 2rem;
 $subtitle-font-size: 1.9rem;
 $header-bcg-color: #302e46;
-$header-height: auto;
+$header-height: 68px;
 
 $font-size-5: 2rem;
 
@@ -69,8 +70,14 @@ $phone-icon-width: 26px;
 $phone-font-size: 1.5rem;
 $phone-color-svg-filter: invert(100%) sepia(0%) saturate(7433%) hue-rotate(181deg) brightness(110%) contrast(99%);
 
+//GALERY
+$galery-bcg-color: black;
+
 //ERRORS
 $error-color: red;
+
+//SPINNER
+$spinner-bcg-color: rgba(29, 29, 29, 0.844);
 
 @mixin blur-area {
   padding: 40px 25px;

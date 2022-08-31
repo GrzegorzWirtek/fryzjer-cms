@@ -5,8 +5,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: calc(100vh - 68px);
-  margin-top: 68px;
+  min-height: calc(100vh - $header-height);
+  margin-top: $header-height;
   background-image: url('../../../../public/images/contact-mobile.png');
   background-repeat: no-repeat;
   background-size: cover;

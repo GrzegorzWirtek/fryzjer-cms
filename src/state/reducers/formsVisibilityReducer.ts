@@ -6,6 +6,7 @@ const initialState = {
 	serviceAddForm: false,
 	contactForm: false,
 	galeryForm: false,
+	uploadImageForm: false,
 	currentId: 0,
 };
 
