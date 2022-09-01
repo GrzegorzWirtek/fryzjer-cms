@@ -5,6 +5,7 @@ import { StateType } from '../../../state/reducers';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../../state';
+import { FormName } from '../../../state/action-types';
 
 const Contact = () => {
 	const {
@@ -53,7 +54,7 @@ const Contact = () => {
 					</a>
 					<button
 						className='contact__edit-btn'
-						onClick={() => ShowForm({ formName: 'contactForm' })}>
+						onClick={() => ShowForm({ formName: FormName.CONTACT_FORM })}>
 						Edytuj
 					</button>
 				</div>

@@ -66,7 +66,6 @@ export const LogOut = () => {
 export const ShowForm =
 	(formNameAndServiceId: { formName: string; currentId?: number }) =>
 	(dispatch: Dispatch<FormsVisibilityAction>) => {
-		console.log('poka');
 		dispatch({
 			type: FormsVisibilityActionType.SHOW,
 			payload: formNameAndServiceId,

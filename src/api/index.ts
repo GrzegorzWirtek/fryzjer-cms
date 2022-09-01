@@ -51,8 +51,6 @@ export const uploadImage = async (image: File) => {
 		const imageName = `images/${Date.now() + image.name}`;
 		const imageRef = ref(storage, imageName);
 		await uploadBytes(imageRef, image);
-		// const data = await uploadBytes(imageRef, image);
-		// const url = await getDownloadURL(data.ref);
 	} catch (error) {
 		console.log(error);
 	}

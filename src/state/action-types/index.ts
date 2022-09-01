@@ -15,6 +15,14 @@ export enum FormsVisibilityActionType {
 	HIDE = 'hide',
 }
 
+export enum FormName {
+	SERVICE_EDIT_FORM = 'serviceEditForm',
+	SERVICE_ADD_FORM = 'serviceAddForm',
+	CONTACT_FORM = 'contactForm',
+	GALERY_FORM = 'galeryForm',
+	UPLOAD_IMAGE_FORM = 'uploadImageForm',
+}
+
 export enum ContactActionType {
 	GET_CONTACT = 'getContact',
 	UPDATE_CONTACT = 'updateContact',

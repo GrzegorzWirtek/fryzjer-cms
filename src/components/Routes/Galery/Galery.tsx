@@ -7,6 +7,7 @@ import { StateType } from '../../../state/reducers';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../../state';
+import { FormName } from '../../../state/action-types';
 import Spinner from '../../Spinner/Spinner';
 
 export type serviceToEditType = {
@@ -34,7 +35,7 @@ const Galery = () => {
 	}, []);
 
 	const handleOnLoad = () => {
-		console.log('teraz onload', processing);
+		if (!processing) return;
 		ProcessingDone();
 	};
 
@@ -44,7 +45,7 @@ const Galery = () => {
 	};
 
 	const handleShowUploadImageForm = () => {
-		ShowForm({ formName: 'uploadImageForm' });
+		ShowForm({ formName: FormName.UPLOAD_IMAGE_FORM });
 	};
 
 	const handleDeleteImage = async () => {

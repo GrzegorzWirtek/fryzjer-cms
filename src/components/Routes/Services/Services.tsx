@@ -8,6 +8,7 @@ import { StateType } from '../../../state/reducers';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../../state';
+import { FormName } from '../../../state/action-types';
 
 export type serviceToEditType = {
 	_id: number;
@@ -73,7 +74,10 @@ const Services = () => {
 				alt='Edit icon'
 				className='service__edit-icon'
 				onClick={() =>
-					ShowForm({ formName: 'serviceEditForm', currentId: item._id })
+					ShowForm({
+						formName: FormName.SERVICE_EDIT_FORM,
+						currentId: item._id,
+					})
 				}
 			/>
 			<img
@@ -94,7 +98,7 @@ const Services = () => {
 				<h2 className='services__title'>Cennik</h2>
 				<button
 					className='service__add-new'
-					onClick={() => ShowForm({ formName: 'serviceAddForm' })}>
+					onClick={() => ShowForm({ formName: FormName.SERVICE_ADD_FORM })}>
 					Dodaj nową usługę
 				</button>
 				<section className='pricelist'>{prices}</section>
