@@ -10,7 +10,7 @@ import {
 } from 'firebase/storage';
 import storage from '../firebase/firebase';
 
-const URL = 'http://localhost:3001/';
+const URL = 'https://fryzjer-backend.herokuapp.com/';
 const LOGIN = 'login';
 const SERVICES = 'services';
 const CONTACT = 'contact';
