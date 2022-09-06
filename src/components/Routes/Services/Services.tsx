@@ -27,9 +27,10 @@ const Services = () => {
 	);
 
 	useEffect(() => {
-		GetServices();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+		if (!services.length) {
+			GetServices();
+		}
+	}, [GetServices, services.length]);
 
 	const [serviceToEdit, setServiceToEdit] = useState<serviceToEditType>({
 		_id: 0,

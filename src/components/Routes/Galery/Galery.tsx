@@ -29,10 +29,10 @@ const Galery = () => {
 	const [popupActive, setPopupActive] = useState(false);
 
 	useEffect(() => {
-		if (galery.length) return;
-		GetImages();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+		if (!galery.length) {
+			GetImages();
+		}
+	}, [GetImages, galery.length]);
 
 	const handleOnLoad = () => {
 		if (!processing) return;

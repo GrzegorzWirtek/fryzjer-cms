@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../state';
 import { StateType } from '../../state/reducers';
+import Spinner from '../Spinner/Spinner';
 
 const LoginPage = () => {
 	const [message, setMessage] = useState('');
+	const [checkingInProcess, setCheckingInProcess] = useState(false);
 
 	const dispatch = useDispatch();
 	const { CheckLogin } = bindActionCreators(actionCreators, dispatch);
@@ -25,8 +27,9 @@ const LoginPage = () => {
 		setMessage(message);
 	}, [login, password, firstVisit]);
 
-	const getInputsValue = (e: React.SyntheticEvent) => {
+	const getInputsValue = async (e: React.SyntheticEvent) => {
 		e.preventDefault();
+		setCheckingInProcess(true);
 		const target = e.target as typeof e.target & {
 			login: { value: string };
 			password: { value: string };
@@ -34,11 +37,13 @@ const LoginPage = () => {
 		const login = target.login.value;
 		const password = target.password.value;
 
-		CheckLogin({ login, password });
+		await CheckLogin({ login, password });
+		setCheckingInProcess(false);
 	};
 
 	return (
 		<div className='login-page'>
+			{checkingInProcess && <Spinner />}
 			<p className='login-page__message'>{message}</p>
 			<form className='login-form' onSubmit={getInputsValue}>
 				<input

@@ -16,9 +16,10 @@ const Contact = () => {
 	const { GetContact, ShowForm } = bindActionCreators(actionCreators, dispatch);
 
 	useEffect(() => {
-		GetContact();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+		if (Object.keys(contact).length === 0) {
+			GetContact();
+		}
+	}, [GetContact, contact]);
 
 	const { street, buildingNr, apartmentNr, zipCode, city, info, tel } = contact;
 
