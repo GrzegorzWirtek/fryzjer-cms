@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/fryzjer-cms/static/css/main.53e9a438.css",
-    "main.js": "/fryzjer-cms/static/js/main.31f6df49.js",
+    "main.css": "/fryzjer-cms/static/css/main.d20347ee.css",
+    "main.js": "/fryzjer-cms/static/js/main.8e96b080.js",
     "static/media/contact.png": "/fryzjer-cms/static/media/contact.ba0582d7c8cf2181cf97.png",
     "static/media/pricelist.png": "/fryzjer-cms/static/media/pricelist.c6b83d4775486e8f3179.png",
     "static/media/header.png": "/fryzjer-cms/static/media/header.f3dd3c8ab8842df1ab68.png",
@@ -9,11 +9,11 @@
     "static/media/pricelist-mobile.png": "/fryzjer-cms/static/media/pricelist-mobile.0687a3e950331ca6eee6.png",
     "static/media/header-mobile.png": "/fryzjer-cms/static/media/header-mobile.a8ecb022635589c370e5.png",
     "index.html": "/fryzjer-cms/index.html",
-    "main.53e9a438.css.map": "/fryzjer-cms/static/css/main.53e9a438.css.map",
-    "main.31f6df49.js.map": "/fryzjer-cms/static/js/main.31f6df49.js.map"
+    "main.d20347ee.css.map": "/fryzjer-cms/static/css/main.d20347ee.css.map",
+    "main.8e96b080.js.map": "/fryzjer-cms/static/js/main.8e96b080.js.map"
   },
   "entrypoints": [
-    "static/css/main.53e9a438.css",
-    "static/js/main.31f6df49.js"
+    "static/css/main.d20347ee.css",
+    "static/js/main.8e96b080.js"
   ]
 }
